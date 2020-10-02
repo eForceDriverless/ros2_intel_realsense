@@ -77,8 +77,11 @@ include_directories(
 add_executable(${PROJECT_NAME}
   include/${PROJECT_NAME}/constants.hpp
   src/realsense_camera_node.cpp
-  src/realsense_camera_node_2.cpp
 )
+
+add_executable(${PROJECT_NAME}2
+        include/${PROJECT_NAME}/constants.hpp
+        src/realsense_camera_node_2.cpp)
 
 ament_target_dependencies(${PROJECT_NAME}
   cv_bridge
