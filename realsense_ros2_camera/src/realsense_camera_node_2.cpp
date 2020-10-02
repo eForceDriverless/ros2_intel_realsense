@@ -99,7 +99,7 @@ class RealSenseCameraNode2 : public rclcpp::Node
 {
 public:
   RealSenseCameraNode2()
-  : Node("RealSenseCameraNode",
+  : Node("RealSenseCameraNode2",
       rclcpp::NodeOptions().automatically_declare_parameters_from_overrides(true)),
     _ros_clock(RCL_ROS_TIME),
     _serial_no("846112071418"),
@@ -178,7 +178,7 @@ public:
     setupPublishers();
     setupStreams();
     rclcpp::sleep_for(std::chrono::nanoseconds(2000000000));
-    timer_ = this->create_wall_timer(std::chrono::seconds(1), std::bind(&RealSenseCameraNode::publishStaticTransforms, this));
+    timer_ = this->create_wall_timer(std::chrono::seconds(1), std::bind(&RealSenseCameraNode2::publishStaticTransforms, this));
     RCLCPP_INFO(logger_, "RealSense Node Is Up!");
   }
 
@@ -1375,7 +1375,7 @@ private:
   rclcpp::Publisher<sensor_msgs::msg::PointCloud2>::SharedPtr _align_pointcloud_publisher;
 
   rclcpp::Time _ros_time_base;
-  rclcpp::Logger logger_ = rclcpp::get_logger("RealSenseCameraNode");
+  rclcpp::Logger logger_ = rclcpp::get_logger("RealSenseCameraNode2");
   rclcpp::TimerBase::SharedPtr timer_;
   bool _sync_frames;
   bool _pointcloud;
