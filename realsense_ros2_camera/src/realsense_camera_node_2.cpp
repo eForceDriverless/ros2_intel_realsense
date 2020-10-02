@@ -95,15 +95,15 @@ public:
   }
 };
 
-class RealSenseCameraNode : public rclcpp::Node
+class RealSenseCameraNode2 : public rclcpp::Node
 {
 public:
-  RealSenseCameraNode()
+  RealSenseCameraNode2()
   : Node("RealSenseCameraNode",
       rclcpp::NodeOptions().automatically_declare_parameters_from_overrides(true)),
     _ros_clock(RCL_ROS_TIME),
-    _serial_no("902512070213"),
-    _base_frame_id("cam_right"),
+    _serial_no("846112071418"),
+    _base_frame_id("cam_left"),
     qos(rclcpp::QoSInitialization::from_rmw(rmw_qos_profile_default)),
     _intialize_time_base(false)
   {
@@ -168,7 +168,7 @@ public:
     _stream_name[ACCEL] = "accel";
   }
 
-  virtual ~RealSenseCameraNode()
+  virtual ~RealSenseCameraNode2()
   {}
 
   virtual void onInit()
@@ -1391,7 +1391,7 @@ private:
 int main(int argc, char * argv[])
 {
   rclcpp::init(argc, argv);
-  auto node = std::make_shared<realsense_ros2_camera::RealSenseCameraNode>();
+  auto node = std::make_shared<realsense_ros2_camera::RealSenseCameraNode2>();
   node->onInit();
   rclcpp::spin(node);
   rclcpp::shutdown();
